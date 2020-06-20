@@ -106,7 +106,8 @@ Vue.prototype.$mount = function (el?: string | Element, hydrating?: boolean): Co
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
-    process.env.NODE_ENV !== "production" && warn(`Do not mount Vue to <html> or <body> - mount to normal elements instead.`);
+    process.env.NODE_ENV !== "production" &&
+      warn(`Do not mount Vue to <html> or <body> - mount to normal elements instead.`);
     return this;
   }
 
@@ -190,7 +191,12 @@ export function mountComponent(vm: Component, el: ?Element, hydrating?: boolean)
     if (process.env.NODE_ENV !== "production") {
       /* istanbul ignore if */
       if ((vm.$options.template && vm.$options.template.charAt(0) !== "#") || vm.$options.el || el) {
-        warn("You are using the runtime-only build of Vue where the template " + "compiler is not available. Either pre-compile the templates into " + "render functions, or use the compiler-included build.", vm);
+        warn(
+          "You are using the runtime-only build of Vue where the template " +
+            "compiler is not available. Either pre-compile the templates into " +
+            "render functions, or use the compiler-included build.",
+          vm
+        );
       } else {
         warn("Failed to mount component: template or render function not defined.", vm);
       }
@@ -363,7 +369,10 @@ Vue.prototype._render = function (): VNode {
   // return empty vnode in case the render function errored out
   if (!(vnode instanceof VNode)) {
     if (process.env.NODE_ENV !== "production" && Array.isArray(vnode)) {
-      warn("Multiple root nodes returned from render function. Render function " + "should return a single root node.", vm);
+      warn(
+        "Multiple root nodes returned from render function. Render function " + "should return a single root node.",
+        vm
+      );
     }
     vnode = createEmptyVNode();
   }
